@@ -5,18 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Coin Compare</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-  <section class="section">
+  <section>
+  <div class="section">
     <div class="container">
       <h1 class="title">
         Welcome to Coin Compare!
       </h1>
+    </div>
+  </div>
+  </section>
+  <section>
+    <div class="section">
       <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
+        Market Cap Chart
       </p>
     </div>
   </section>
+  <section>
+    <div class="container">
+      <div class="notification is-primary" id="market_cap_chart">
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>        
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./assets/js/coingecko.js"></script>
   <script src="script.js"></script>
   </body>

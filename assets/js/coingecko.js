@@ -45,11 +45,21 @@ class coinGeckoAPI {
         let apiResponse = await fetch(this.#baseURL + "/coins/" + coinName + "?localization=" + localization +
             "&tickers=" + tickers + "&market_data=" + marketData + 
             "&community_data=true&developer_data=true&sparkline=true"
-            )
+            );
 
         let apiData = await apiResponse.json();
         return apiData;
     }
+
+    async getCoinPriceData(coinName, days) {
+
+        let apiResponse = await fetch(this.#baseURL + "/coins/" + coinName + "/market_chart?vs_currency=usd&days=" + days);
+        
+        let apiData = await apiResponse.json();
+        return apiData;
+    }
+
+
     
     //get the list of all coins.
     //this is returned as an array of objects, formatted as:
@@ -71,3 +81,4 @@ coinGeckoAPI_Instance.getListOfAllCoins().then( data => {
     console.log(data);
 });
 coinGeckoAPI_Instance.getCoinDataFULL("bitcoin").then( data => { console.log(data); });
+coinGeckoAPI_Instance.getCoinPriceData("bitcoin", 2).then (data => { console.log(data); });

@@ -102,15 +102,16 @@ class coinGeckoAPI {
     }
     
     //get the list of all coins.
-    //this is returned as an array of objects, formatted as:
     async getListOfAllCoins() {
         return this.#coinGeckoSimpleList;
     }
 
+    //returns number of coins
     async getNumOfAllCoins() {
         return this.#numOfCoins;
     }
 
+    //return number of pages
     async getnumOfPagesOf100() {
         return this.#numOfPagesOf100;
     }

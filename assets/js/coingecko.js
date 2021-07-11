@@ -28,6 +28,11 @@ class coinGeckoAPI {
         return apiData;
     }
 
+    #convertDate(_13DigitDate) {
+        let _date = new Date(_13DigitDate);
+        return _date.toISOString();
+    }
+
     //#endregion privateMethods
 
     //#region publicMethods
@@ -51,12 +56,25 @@ class coinGeckoAPI {
         return apiData;
     }
 
+    //returns price, market cap, and volume data. Dates are in ISO format. Values are in USD.
     async getCoinPriceData(coinName, days) {
 
         let apiResponse = await fetch(this.#baseURL + "/coins/" + coinName + "/market_chart?vs_currency=usd&days=" + days);
         
         let apiData = await apiResponse.json();
-        return apiData;
+        var modifiedAPI = apiData;
+
+        for (var i = 0; i < modifiedAPI.prices.length; i++) {
+            modifiedAPI.prices[i][0] = this.#convertDate(modifiedAPI.prices[i][0]);
+        }
+        for (var i = 0; i < modifiedAPI.market_caps.length; i++) {
+            modifiedAPI.market_caps[i][0] = this.#convertDate(modifiedAPI.market_caps[i][0]);
+        }
+        for (var i = 0; i < modifiedAPI.total_volumes.length; i++) {
+            modifiedAPI.total_volumes[i][0] = this.#convertDate(modifiedAPI.total_volumes[i][0]);
+        }
+
+        return modifiedAPI;
     }
 
 

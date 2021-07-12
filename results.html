@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 <link rel="stylesheet" href="Coin-Compare-Stylesheet.css">
+
 <head>
   <meta charset="UTF-8">
   <title>Coin Compare</title>
@@ -27,32 +29,20 @@
   </div>
 </div>
 
+<input type="Reset" id="coin_comparison_reset_button">
 
 <table style="width:50%" id="result_chart"> Coin Comparisons
   <tr>
-    <th>Coin 1</th>
-    <th>Coin 2</th>
-    <th>Coin 3</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Market Cap</th>
   </tr>
-  <tr id="coin_comparison_1">
-    <td>Market Cap</td>
-    <td>Volume</td>
-    <td>Percent Change</td>
-  </tr>
-  <tr id="coin_comparison_2">
-    <td>Market Cap</td>
-    <td>Volume</td>
-    <td>Percent Change</td>
-  </tr>
-  <tr id="coin_comparison_3">
-    <td>Market Cap</td>
-    <td>Volume</td>
-    <td>Percent Change</td>
-  </tr>
+
+  <tbody id="tableBody"></tbody>
 </table>
 
 <div>
-  <input type="text" placeholder="Search.." id="coin_comparison_searchbar">
+  <input type="text" placeholder="Search.." class="coin_comparison_searchbar">
   <input type="submit" id="coin_comparison_search_button">
 </div>
 
@@ -60,12 +50,11 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
-//ToDo 
-//1) format html and divs. 
-//2) create stat element. 
-//3) create comparison table.
+var resetButton = document.getElementById('coin_comparison_reset_button');
+var searchButton = document.getElementById('coin_comparison_search_button')
 
-//Consider changing labels to only the past 7 days.
+
+//Change labels to dynamically display only the past 7 days.
 const labels = [
   'January',
   'February',
@@ -75,7 +64,10 @@ const labels = [
   'June',
 ];
 
-//will have to pull coin info and plug it into data.
+//will have to pull coin info and plug it into data. 
+//for labels, use API provided labels. For data, use dynamically provided API data. 
+//for "label", change it to coin[name]. 
+//for data, pull 7 day data.
 const data = {
   labels: labels,
   datasets: [{
@@ -93,18 +85,26 @@ const config = {
 };
 
 
-  
-    var myChart = new Chart(
+var myChart = new Chart(
       document.getElementById('myChart'),
       config
-    );
-  
+);
 
-  
-  
-  
-  
+//this appends the current coin to the coin_stats display.
+
+    var currentCard = $("coin_stats").append("<div>").addClass("card-body");
+    currentCard.empty();
+    //var currentName = currentCard.append("<p>");
+    // currentCard.append(currentName);
+    
+    //append market data to the card. 
+    var currentTemp = currentName.append("<p>");
+        currentName.append(currentTemp);
+        currentTemp.append("<p>" + "Market Cap: " + data['main']['temp'].toFixed(2) + "</p>");
+        currentTemp.append("<p>" + "Volume: " + data['main']['humidity'] + "%" + "</p>");
+        currentTemp.append("<p>" + "Change: " + data['price'][0] + "</p>");
   </script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="assets.js"></script>
 </body>
 </html>

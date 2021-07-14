@@ -18,7 +18,6 @@ class coinGeckoAPI {
         this.#coinGeckoSimpleList = this.#listOfAllCoins();
         this.#numOfCoins = this.#coinGeckoSimpleList.then( data => { return data.length });
         this.#numOfPagesOf100 = this.#coinGeckoSimpleList.then( data => { return Math.ceil(data.length / 100) });
-        
     }
     
     //#region privateMethods
@@ -91,15 +90,6 @@ class coinGeckoAPI {
 
         return apiData;
     }
-
-    //Matches a search string to coin name. Returns an array of coin market data summaries. maxCount limits the search results to specified integer.
-    async getNcoinsByNameSearch(maxCount, coinSearchString) {
-
-    }
-    //Matches a search string to coin name. Returns an array of coin market data summaries. maxCount limits the search results to specified integer.
-    async getNcoinsBySymbolSearch(maxCount, symbolSearchString) {
-
-    }
     
     //get the list of all coins.
     async getListOfAllCoins() {
@@ -119,6 +109,7 @@ class coinGeckoAPI {
     //#endregion publicMethods
 }
 
+/*
 //================================================
 //HOW TO USE:
 var coinGeckoAPI_Instance = new coinGeckoAPI();
@@ -139,3 +130,5 @@ coinGeckoAPI_Instance.getnumOfPagesOf100().then ( data => { console.log(data); }
 //This is because all I'm doing is sending the outputs to the console.
 //To store the results, do this:
 let firstPage = coinGeckoAPI_Instance.get100coinsByMarketCapRank(1).then (data => { return data });
+
+*/

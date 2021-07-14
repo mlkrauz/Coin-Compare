@@ -10,8 +10,9 @@ $.ajax({
     dataType: "json", 
     success: function(response){
         var name = response;
-            //Important code starts here to populate table  
+    //Important code starts here to populate table  
         var yourTableHTML = "";
+        $("table tr:first").after(newRows);
             jQuery.each(name, function(i,data) {
                 $("#table").append("<tr><td>" + data + "</td></tr>");
             });

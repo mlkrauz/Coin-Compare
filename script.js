@@ -3,11 +3,6 @@ coinGeckoAPI_Instance.get100coinsByMarketCapRank(1).then (data => {
     //create a function here to store the returned data,
     //or
     //call a new function:
-<table id="table">
-    <tbody>
-    </tbody>
-</table>
-
 $.ajax({    
     type: "POST",
     url: "/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=",

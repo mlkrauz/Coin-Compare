@@ -11,7 +11,7 @@
 
 
 <div class="myResults">
-  <h2>This is an example chart</h2>
+  <h1>This is an example chart</h2>
   <p>Ready for our crypto additions!</p>
 </div>
 
@@ -36,6 +36,7 @@
     <th>Name</th>
     <th>Price</th>
     <th>Market Cap</th>
+    <th>24-Hour Volume</th>
   </tr>
 
   <tbody id="tableBody"></tbody>
@@ -48,50 +49,100 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets.js"></script>
 <script>
+//IMPORTANT
+//When you are ready to pass a user selected coin to the chart, please do the following:
+//1) store price data for last 7 days in an array (see example for bitArray if confused)
+//2) store the coin title (this can be a normal var). 
+//3) replace the sample data in mySelectedCoin with the name of price array. Replace the label with your stored coin title. 
+//3) add mySelectedCoin to the var 'speedData' so it can be graphed. 
 
 var resetButton = document.getElementById('coin_comparison_reset_button');
 var searchButton = document.getElementById('coin_comparison_search_button')
 
 
-//Change labels to dynamically display only the past 7 days.
-const labels = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-];
 
-//will have to pull coin info and plug it into data. 
-//for labels, use API provided labels. For data, use dynamically provided API data. 
-//for "label", change it to coin[name]. 
-//for data, pull 7 day data.
-const data = {
-  labels: labels,
-  datasets: [{
-    label: 'My First dataset',
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45],
-  }]
+//gets the day of the week, and appends it to the chart. 
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+var goBackDays = 7;
+
+var today = new Date();
+var daysSorted = [];
+
+for(var i = 0; i < goBackDays; i++) {
+  var newDate = new Date(today.setDate(today.getDate() - 1));
+  daysSorted.push(days[newDate.getDay()]);
+}
+
+var speedCanvas = document.getElementById("myChart");
+
+
+var mySelectedCoin = {
+    label: "Car B - Speed (mph)",
+    //INSERT YOUR PRICE ARRAY HERE
+    data: [20, 15, 60, 60, 65, 30, 70],
+    lineTension: 0,
+    fill: false,
+  borderColor: 'blue'
+  };
+
+
+var Bitcoin = {
+    label: "Bitcoin",
+    data: bitArray,
+    hidden: true,
+    lineTension: 0,
+    fill: false,
+    borderColor: 'green'
+  };
+
+var Ethereum = {
+    label: "Ethereum",
+    data: ethArray,
+    hidden: true,
+    lineTension: 0,
+    fill: false,
+  borderColor: 'blue'
+  };
+
+var BinanceCoin = {
+    label: "Binance Coin",
+    data: bnbArray,
+    hidden: true,
+    lineTension: 0,
+    fill: false,
+  borderColor: 'orange'
 };
 
-const config = {
+
+//ADD mySelectedCoin AFTER it is assigned an array value. Otherwise it will not load the chart as mySelectedCoin will be undefined. 
+var speedData = {
+  labels: daysSorted.reverse(),
+  datasets: [Bitcoin,Ethereum,BinanceCoin]
+};
+
+var chartOptions = {
+  legend: {
+    display: true,
+    position: 'top',
+    labels: {
+      boxWidth: 80,
+      fontColor: 'black'
+    }
+
+  }
+};
+
+var lineChart = new Chart(speedCanvas, {
   type: 'line',
-  data,
-  options: {}
-};
-
-
-var myChart = new Chart(
-      document.getElementById('myChart'),
-      config
-);
+  data: speedData,
+  options: chartOptions
+});
 
 //this appends the current coin to the coin_stats display.
-
+//Use this to load the array sent from Index.html, and append it's data to the page. 
+/*
     var currentCard = $("coin_stats").append("<div>").addClass("card-body");
     currentCard.empty();
     //var currentName = currentCard.append("<p>");
@@ -100,11 +151,12 @@ var myChart = new Chart(
     //append market data to the card. 
     var currentTemp = currentName.append("<p>");
         currentName.append(currentTemp);
-        currentTemp.append("<p>" + "Market Cap: " + data['main']['temp'].toFixed(2) + "</p>");
-        currentTemp.append("<p>" + "Volume: " + data['main']['humidity'] + "%" + "</p>");
+        currentTemp.append("<p>" + "Market Cap: " + data['main']['market_caps'].toFixed(2) + "</p>");
+        currentTemp.append("<p>" + "Volume: " + data['main']['volume'] + "%" + "</p>");
         currentTemp.append("<p>" + "Change: " + data['price'][0] + "</p>");
+      */
+  
   </script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="assets.js"></script>
 </body>
 </html>

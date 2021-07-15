@@ -1,5 +1,7 @@
-var coinGeckoAPI_Instance = new coinGeckoAPI();
-var tableInsertion = $("#coinListTable");
+const coinGeckoAPI_Instance = new coinGeckoAPI();
+const tableInsertion = $("#coinListTable");
+const searchButton = $("#searchButton");
+const modalDiv = $("#modalDiv");
 
 var tableHeaderFooter = `<tr>
     <th><abbr title="Rank">Rank</abbr></th>
@@ -12,6 +14,10 @@ var tableHeaderFooter = `<tr>
 </tr>`;
 
 //note to mark: use .empty() to remove the page of 100 coins, if time permits a page selector
+
+
+
+
 
 coinGeckoAPI_Instance.get100coinsByMarketCapRank(1).then (data => {
     //create a function here to store the returned data,
@@ -44,7 +50,7 @@ success: function(response){
     for (var i = 0; i < data.length; i++) {
         var currentData = data[i];
         var newRow = $(`<tr></tr>`);
-        var newButton = $(`<button>Compare</button>`);
+        var newButton = $(`<button class="button is-link">Compare</button>`);
         var newRowContent = $(`
             <td>${currentData.market_cap_rank}</td>
             <td><img src="${currentData.image}" width="40" height="40"></td>
@@ -72,3 +78,11 @@ success: function(response){
     tableInsertion.append(tableFooter);
 
 });
+
+searchButton.click(function() {
+    modalDiv.addClass("is-active");
+});
+
+$(".delete").click(function() {
+    modalDiv.removeClass("is-active");
+})

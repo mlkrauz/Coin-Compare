@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
-  <body>
+  <body id="body">
     <nav class="navbar is-primary" class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <!-- <a class="navbar-item" href="./assets/js/coin-compare-logo.png"> -->
-          <img src="./assets/images/coin-compare-logo.png" width="150" height="80">
+          <img src="./assets/images/coin-compare-logo.png" alt="logo" width="150" height="80">
         <!-- </a> -->
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
@@ -27,18 +27,6 @@
         Welcome to Coin Compare!
       </h1>
         <br>
-        <form>
-          <div class="field has-addons">
-            <div class="control">
-              <input class="input" type="text" placeholder="Search currencies">
-            </div>
-            <div class="control">
-              <a class="button is-primary">
-                Search
-              </a>
-            </div>
-          </div>
-        </form>
     </div>
   </div>
   </section>
@@ -53,6 +41,36 @@
       </div>
     </div>
   </section>
+  <br>
+  <section>
+    <div class="level"> <!-- search button -->
+      <div class="level-item"></div>
+      <button class="button is-info level-item has-text-centered" id="searchButton">Search for specific cryptocurrency</button>
+      <div class="level-item"></div>
+    </div>
+    <div class="level" id="previousSearches">
+      <!-- Previous searches go here -->
+    </div>
+  </section>
+  <!-- Hidden modal elements -->
+  <div class="modal" id="modalDiv">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="message is-info">
+        <div class="message-header">
+          <p>Cryptocurrency Search</p>
+          <button class="delete" aria-label="close"></button>
+        </div>
+        <div class="message-body">
+          <input class="input" type="text" placeholder="Search cryptocurrency by name or symbol!">
+          <div id="searchResults" class="dropdown">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Hidden modal elements -->
   <br>
   <section>
     <div class="container">

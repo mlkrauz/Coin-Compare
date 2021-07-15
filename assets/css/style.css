@@ -1,0 +1,32 @@
+body{
+    background-color: darkslategray;
+    margin: 0rem;
+    padding: 1rem;
+}
+
+.table{
+    border-style: double;
+    border-radius: .5rem;
+    border-color: darkslategray;
+}
+
+.button is-link{
+    border-radius: .2rem;
+    background-color: darkturquoise;
+}
+
+.title{
+    font-family: sans-serif;
+    color: floralwhite;
+}
+
+.footer{
+    background-color: darkslategrey;
+    color:floralwhite;
+}
+
+.canvas{
+    border-style: double;
+    border-radius: .5rem;
+    border-color: darkslategrey;
+}

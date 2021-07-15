@@ -39,7 +39,7 @@ success: function(response){
     var tableHeader = $(`<thead>
         ${tableHeaderFooter}
     </thead>`);
-    tableInsertionDiv.append(tableHeader);
+    tableInsertion.append(tableHeader);
 
     for (var i = 0; i < data.length; i++) {
         var currentData = data[i];
@@ -58,6 +58,6 @@ success: function(response){
     var tableFooter = $(`<tfoot>
         ${tableHeaderFooter}
     </tfoot>`);
-    tableInsertionDiv.append(tableFooter);
+    tableInsertion.append(tableFooter);
 
 });

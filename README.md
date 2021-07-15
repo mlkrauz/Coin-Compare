@@ -3,7 +3,7 @@ A website for searching for and comparing cryptocurrencies!
 
 ### Developers Note
 
-Coin-Compare works best in the Chrome. 
+Coin-Compare works best in the Chrome web browser. 
 
 ## General Info
 

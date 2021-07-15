@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Coin Compare</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <body>
     <nav class="navbar is-primary" class="navbar" role="navigation" aria-label="main navigation">
@@ -58,32 +58,8 @@
     <div class="container">
       <div class="notification is-primary">
         <div class="table">
-          <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <thead>
-              <tr>
-                <th><abbr title="Rank">Rank</abbr></th>
-                <th>Image</th>
-                <th><abbr title="Name">Name</abbr></th>
-                <th><abbr title="Price">Price</abbr></th>
-                <th><abbr title="All Time High">All Time High</abbr></th>
-                <th><abbr title="Results">Results</abbr></th>
-              </tr>
-            </thead>
-            <tr>
-              <td>
-                <!--table content-->
-              </td>
-            </tr>
-            <tfoot>
-              <tr>
-                <th><abbr title="Rank">Rank</abbr></th>
-                <th>Image</th>
-                <th><abbr title="Name">Name</abbr></th>
-                <th><abbr title="Price">Price</abbr></th>
-                <th><abbr title="All Time High">All Time High</abbr></th>
-                <th><abbr title="Results">Results</abbr></th>
-              </tr>
-            </tfoot>
+          <table class="table is-striped is-narrow is-hoverable is-fullwidth" id="coinListTable">
+            <!-- Table Content -->
           </table>
         </div>
       </div>
@@ -99,6 +75,7 @@
       </p>
     </div>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./assets/js/coingecko.js"></script>
   <script src="./assets/js/script.js"></script>

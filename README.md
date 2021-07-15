@@ -14,6 +14,10 @@ Coin-Compare was created to help potential investors and cryptocurrency enthusia
 ## Deployed Links
 **https://mlkrauz.github.io/Coin-Compare/**
 
+![The front page of Coin Compare](./assets/images/indexPreview.png)
+
+![The results page of Coin Compare](./assets/images/resultPreview.PNG)
+
 ## References 
 
 Annotated Google Slides highlight functionality and website screenshots.

@@ -13,6 +13,7 @@ class coinRankingAPI {
     async getSearchSuggestions(searchText) {
 
         let apiCall = this.#baseURL + "/search-suggestions?query=" + searchText;
+        console.log(apiCall);
         let apiResponse = await fetch(apiCall, {
             headers: {
                 'x-access-token': this.#key
@@ -28,5 +29,5 @@ class coinRankingAPI {
 
 
 //test
-coinRankingInstance = new coinRankingAPI();
-console.log(coinRankingInstance.getSearchSuggestions("bit"));
+//coinRankingInstance = new coinRankingAPI();
+//console.log(coinRankingInstance.getSearchSuggestions("bit"));

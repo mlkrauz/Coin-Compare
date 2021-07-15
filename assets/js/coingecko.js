@@ -91,6 +91,22 @@ class coinGeckoAPI {
         return apiData;
     }
     
+    //takes in a symbol as a string, returns a coingecko ID if the symbol matches.
+    async getIDfromSymbol(input) {
+        let list = await this.#coinGeckoSimpleList.then(data => { return data; });
+
+        var symbol = input.toLowerCase();
+        var id = "selectionNotFound"
+
+        for (i = 0; i < list.length; i++) {
+            if (list[i].symbol === symbol) {
+                id = list[i].id;
+            }
+        }
+
+        return id;
+    }
+
     //get the list of all coins.
     async getListOfAllCoins() {
         return this.#coinGeckoSimpleList;

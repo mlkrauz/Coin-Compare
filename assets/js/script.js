@@ -43,16 +43,27 @@ success: function(response){
 
     for (var i = 0; i < data.length; i++) {
         var currentData = data[i];
-        var newRow = $(`<tr>
+        var newRow = $(`<tr></tr>`);
+        var newButton = $(`<button>Compare</button>`);
+        var newRowContent = $(`
             <td>${currentData.market_cap_rank}</td>
             <td><img src="${currentData.image}" width="40" height="40"></td>
             <td>${currentData.name}</td>
             <td>${currentData.symbol}</td>
             <td>$${currentData.current_price}</td>
             <td>$${currentData.market_cap}</td>
-            <td><button>Compare</button></td>
-        </tr>`);
+            <td></td>`);
+
+        newRowContent.eq(12).append(newButton);
+        newRow.append(newRowContent);
         tableInsertion.append(newRow);
+
+        newButton.click({parameter_currentData: currentData}, function(event) {
+            let currentData = event.data.parameter_currentData;
+            const coinID = currentData.id;
+
+            location.assign("./results.html?id=" + coinID);
+        });
     }
 
     var tableFooter = $(`<tfoot>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<link rel="stylesheet" href="Coin-Compare-Stylesheet.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<link rel="stylesheet" href="style.css">
 
 <head>
   <meta charset="UTF-8">
@@ -9,9 +12,9 @@
 
 
 
-<div class="myResults">
-  <h1>This is an example chart</h2>
-  <p>Ready for our crypto additions!</p>
+<div class="container">
+  <h1 class="title">Coin Performance</h2>
+  <p>7-day price chart</p>
 </div>
 
 
@@ -21,34 +24,37 @@
     <canvas id="myChart"></canvas>
   </div>
   
-  <div id="coin_stats">
+  <div id="coin_stats" class="container">
     <p id="coin_market_cap">Market Cap:</p>
-    <p id="coin_volume">Volume</p>
-    <p id="coin_percentage_change">Perctange change</p>
+    <p id="coin_volume">Volume:</p>
+    <p id="coin_percentage_change">Perctange Change:</p>
   </div>
 </div>
 
-<input type="Reset" id="coin_comparison_reset_button">
+<div class="container">
+  <input type="Reset" id="coin_comparison_reset_button" class="button">
+</div>
 
-<table style="width:50%" id="result_chart"> Coin Comparisons
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Market Cap</th>
-    <th>24-Hour Volume</th>
+<div class="container">
+  <table style="width:50%" id="result_chart" class="container"> Coin Comparisons
+   <tr>
+     <th>Name</th>
+     <th>Price</th>
+     <th>Market Cap</th>
+     <th>24-Hour Volume</th>
   </tr>
 
-  <tbody id="tableBody"></tbody>
-</table>
+ <tbody id="tableBody"></tbody>
+ </table>
+</div>
 
 <div>
   <input type="text" placeholder="Search.." class="coin_comparison_searchbar">
-  <input type="submit" id="coin_comparison_search_button">
+  <input type="submit" id="coin_comparison_search_button" class="button">
 </div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="./assets/js/coingecko.js"></script>
 <script src="./assets/js/assets.js"></script>
 <script>
 //IMPORTANT

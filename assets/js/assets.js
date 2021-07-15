@@ -72,6 +72,7 @@ console.log(bitArray);
 var inputValue = document.querySelector(".coin_comparison_searchbar");
 var obj;
 //data for a desired coin is pulled on click. 
+/*
 searchButton.addEventListener('click',function(FindCoin){
   var searchInput = $(".coin_comparison_searchbar").val()
   console.log('"'+searchInput+'"');
@@ -99,6 +100,7 @@ searchButton.addEventListener('click',function(FindCoin){
         <td>${Volume} </td> 
     </tr> `;
 })
+*/
 
 //gets the day of the week, and appends it to the chart. 
 
@@ -107,11 +109,126 @@ searchButton.addEventListener('click',function(FindCoin){
     const tableBodyEl = document.querySelector('tbody');
 
     //clears coin comparison data when selected. 
+    /*
     resetButton.addEventListener('click',function(){
         $("tbody").empty();
     });
+    */
 
-  })
+
+
+
+
+
+
+
+
+
+//IMPORTANT
+//When you are ready to pass a user selected coin to the chart, please do the following:
+//1) store price data for last 7 days in an array (see example for bitArray if confused)
+//2) store the coin title (this can be a normal var). 
+//3) replace the sample data in mySelectedCoin with the name of price array. Replace the label with your stored coin title. 
+//3) add mySelectedCoin to the var 'speedData' so it can be graphed. 
+
+//var resetButton = document.getElementById('coin_comparison_reset_button');
+//var searchButton = document.getElementById('coin_comparison_search_button')
+
+
+
+//gets the day of the week, and appends it to the chart. 
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+var goBackDays = 7;
+
+var today = new Date();
+var daysSorted = [];
+
+for(var i = 0; i < goBackDays; i++) {
+  var newDate = new Date(today.setDate(today.getDate() - 1));
+  daysSorted.push(days[newDate.getDay()]);
+}
+
+var speedCanvas = document.getElementById("myChart");
+
+
+var mySelectedCoin = {
+    label: "Car B - Speed (mph)",
+    //INSERT YOUR PRICE ARRAY HERE
+    data: [20, 15, 60, 60, 65, 30, 70],
+    lineTension: 0,
+    fill: false,
+  borderColor: 'blue'
+  };
+
+
+var Bitcoin = {
+    label: "Bitcoin",
+    data: bitArray,
+    hidden: true,
+    lineTension: 0,
+    fill: false,
+    borderColor: 'green'
+  };
+
+var Ethereum = {
+    label: "Ethereum",
+    data: ethArray,
+    hidden: true,
+    lineTension: 0,
+    fill: false,
+  borderColor: 'blue'
+  };
+
+var BinanceCoin = {
+    label: "Binance Coin",
+    data: bnbArray,
+    hidden: true,
+    lineTension: 0,
+    fill: false,
+  borderColor: 'orange'
+};
+
+
+//ADD mySelectedCoin AFTER it is assigned an array value. Otherwise it will not load the chart as mySelectedCoin will be undefined. 
+var speedData = {
+  labels: daysSorted.reverse(),
+  datasets: [Bitcoin,Ethereum,BinanceCoin]
+};
+
+var chartOptions = {
+  legend: {
+    display: true,
+    position: 'top',
+    labels: {
+      boxWidth: 80,
+      fontColor: 'black'
+    }
+
+  }
+};
+
+var lineChart = new Chart(speedCanvas, {
+  type: 'line',
+  data: speedData,
+  options: chartOptions
+});
+
+//this appends the current coin to the coin_stats display.
+//Use this to load the array sent from Index.html, and append it's data to the page. 
+/*
+    var currentCard = $("coin_stats").append("<div>").addClass("card-body");
+    currentCard.empty();
+    //var currentName = currentCard.append("<p>");
+    // currentCard.append(currentName);
+    
+    //append market data to the card. 
+    var currentTemp = currentName.append("<p>");
+        currentName.append(currentTemp);
+        currentTemp.append("<p>" + "Market Cap: " + data['main']['market_caps'].toFixed(2) + "</p>");
+        currentTemp.append("<p>" + "Volume: " + data['main']['volume'] + "%" + "</p>");
+        currentTemp.append("<p>" + "Change: " + data['price'][0] + "</p>");
+      */
+  
 
 
 

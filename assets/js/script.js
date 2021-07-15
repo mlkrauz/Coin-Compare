@@ -81,8 +81,10 @@ success: function(response){
 
 searchButton.click(function() {
     modalDiv.addClass("is-active");
+    $("html").addClass("is-clipped");
 });
 
 $(".delete").click(function() {
     modalDiv.removeClass("is-active");
+    $("html").removeClass("is-clipped");
 })
